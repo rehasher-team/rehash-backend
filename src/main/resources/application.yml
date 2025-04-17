@@ -1,0 +1,30 @@
+spring:
+  config:
+    import:
+      optional:
+        file: ./prod.env
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_URL}/rehash-prod-db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update # update는 자동으로 테이블 생성/수정, production 환경에서는 none이나 validate로 설정
+    show-sql: true # 실행되는 SQL 쿼리를 출력
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  security:
+    jwt:
+      secret: "secureSecretKey" # JWT Secret Key
+      expiration: 3600000  # 1시간 (밀리초)
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
