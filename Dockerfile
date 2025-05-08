@@ -15,10 +15,6 @@ WORKDIR /app
 
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-COPY ./entrypoint.sh ./entrypoint.sh
-
 EXPOSE 8080
 
-RUN chmod 755 ./entrypoint.sh
-
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["java","-jar","app.jar"]
