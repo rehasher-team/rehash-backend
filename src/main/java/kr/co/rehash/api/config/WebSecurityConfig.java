@@ -24,9 +24,8 @@ public class WebSecurityConfig {
 
                 // 엔드포인트 접근 권한 설정
                 .authorizeHttpRequests(auth -> auth
-                                .anyRequest().permitAll()
-//                        .requestMatchers("/api/users/**").permitAll() // /api/users/** 경로는 인증 없이 접근 가능
-//                        .anyRequest().authenticated() // 다른 모든 요청은 인증 필요
+                        .requestMatchers("/users/**").permitAll() // /api/users/** 경로는 인증 없이 접근 가능
+                        .anyRequest().authenticated() // 다른 모든 요청은 인증 필요
                 )
 
                 // HTTP Basic 인증 활성화

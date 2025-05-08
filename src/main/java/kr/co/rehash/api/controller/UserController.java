@@ -1,6 +1,7 @@
 package kr.co.rehash.api.controller;
 
 import jakarta.validation.Valid;
+import kr.co.rehash.api.common.response.ApiResponse;
 import kr.co.rehash.api.domain.User;
 import kr.co.rehash.api.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,10 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+    public ApiResponse<User> createUser(@Valid @RequestBody User user) {
         log.info(String.valueOf(user));
-        return ResponseEntity.ok(userService.createUser(user));
+        return ApiResponse.success(userService.createUser(user), "성공적으로 요청했습니다.");
+//        throw new CustomException(ErrorCode.NOT_FOUND);
     }
 
     @GetMapping("/{id}")
@@ -29,3 +31,4 @@ public class UserController {
     }
 
 }
+
