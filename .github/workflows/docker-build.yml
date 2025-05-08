@@ -41,3 +41,5 @@ jobs:
 
           docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
+
+          echo $(date +"%s") | aws s3 cp - s3://rehash-private-storage/rehash-backend/version/LATEST
