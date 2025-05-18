@@ -8,7 +8,7 @@ public enum ErrorCode {
     // 404: Not Found
     NOT_FOUND(HttpStatus.NOT_FOUND, "데이터가 없습니다."),
     // 503: 서버 오류
-    SERVER_ERROR(HttpStatus.SERVICE_UNAVAILABLE, "예상치 못한 서버 오류가 발생했습니다.");
+    SERVER_ERROR(HttpStatus.SERVICE_UNAVAILABLE, "예상치 못한 서버 오류가 발생했습니다. (SERVER_ERROR)");
 
     private final HttpStatus httpStatus;
     private final String message;
